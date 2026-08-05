@@ -121,7 +121,7 @@ Os Tipos de Requisição HTTP indicam a ação que o usuário deseja executar no
 - ZIP - Non Thread Safe 8.5;
 - Descompactar o Arquivo do PHP na pasta C:\src\php;
    - (Para Descompactar, usar o 7Zip = Melhor).
-   - => Nunca salvar o arquivo na raiz do sistema (C:).
+   - Nunca salvar o arquivo na raiz do sistema (C:).
 
 - Modificar o arquivo php.ini-development para => php.ini;
    - ( Criar as configurções do PHP na Máquina).
@@ -138,4 +138,13 @@ Sem contar que a linguagem traz diveros recursos que facilitam e aceleram o proc
 
 ##### Criando Minha Primeira Aplicação em PHP
 
-Criando um Hello, World !!
+- Criando um Hello, World !!
+
+##### CRiando o Perfil de PHPvanilla 
+
+-> Profile -> New Profile 
+-> Extensions: 
+- PHP IntePhense ( A do Elefantinho )
+- PHP Debug (Xdebug)
+- PHP CS FIXER: Formatação padrão do Código (Identação) 
+- PHP Server: Sobe um Servidor Local para Acompanhamento em Tempo Real
