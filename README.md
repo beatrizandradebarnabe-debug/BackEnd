@@ -140,11 +140,291 @@ Sem contar que a linguagem traz diveros recursos que facilitam e aceleram o proc
 
 - Criando um Hello, World !!
 
-##### CRiando o Perfil de PHPvanilla 
+##### Criando o Perfil de PHPvanilla 
 
 -> Profile -> New Profile 
 -> Extensions: 
-- PHP IntePhense ( A do Elefantinho )
-- PHP Debug (Xdebug)
+- PHP IntePhense ( A do Elefantinho ): AutoCompletar (Snipets)
+- PHP Debug (Xdebug): Acha Erros em Linha de Código
 - PHP CS FIXER: Formatação padrão do Código (Identação) 
 - PHP Server: Sobe um Servidor Local para Acompanhamento em Tempo Real
+
+##### Estudo de Variáveis e Constantes em PHP
+
+Declarar variáveis é alocar um espaço na memoria que permite a inclusão e manipulação de dados.
+
+**Variáveis**
+
+- devem ser declaradas usando "$" antes do nome da variável;
+- podem ser String, Numérica (Integer e Float), Booleanas e Nulas. Não Permite declaração de Undefined 
+- São não tipadas (não precisa declarar o tipo na criação), a tipagem é atribuida ao adicionar o valor
+- usar o "declare(strict_types=1);" na primeira linha do arquivo ; => blindar o sistema contra conflitos de tipos de variáveis
+
+**Constantes**
+
+-  não podem ser modificas ou redeclaradas após a criação
+- pode ser criada usando "const" ou "define"
+- não permitem interpolação
+
+##### Estudo de Operadores
+
+**Aritméticos**: São usados para Realizar Cálculos.
+
+ | Operador | Nome | Exemplo | Resultado | 
+ | - | - | - | - |
+ | + | Adição | 10 + 5 | 15 |
+ | - | Subtração | 10 - 5 | 5 | 
+ | * | Multiplicação | 10 * 5 | 50 |
+ | / | Divisão | 10 / 5 | 2 |
+ | % | Módulo (Resto) | 10 % 3 | 1 (10 div 3 da 3, sobra 1) | 
+ | ** | Expoente | 2 ** 3 | 8(2 elevado a 3) | 
+
+obs: O Operador % é o melhor amigo de um programador, permite ordenar listas e porganizar fila e pilhas.
+
+---
+
+**Relacionais**: Permitem uma Comparação entre dois ou mais valores, o resultado de uma operação relacional é sempre uma booleana (true , false )
+
+
+| Nomes | Operador | Exemplo | Resultado |
+| - | - | - | - |
+| Iguais | == | "10"==10 | true | 
+| Igualdade Estrita | === | "10"===10 | false | 
+| Diferente | != | "10"!=10 | false |
+| Diferença Estrita | !== | "10"!==10 | true |
+| Maior que | > | 18 > 18 | false |
+| Menor que | < | 10 < 20 | true |
+| Maior ou Igual | >= | 18 >= 18 | true |
+| Menor ou igual | <= | 10 <= 5 | false |
+
+**Lógicos**: Permite a Combinação entre sentenças.
+
+- Operador AND (E) => && : para o resultado se verdaddeiro, TODAS as Combinações precisam ser verdadeiras
+    - true && true => true
+    - true && false => false
+
+- Operador OR (OU) => || : para o resultado ser verdadeiro , Basta APENAS UMA condição ser verdadeira
+    - false || true => true
+    - false || false => false
+
+- Operador NOT (Não) => ! : Inverte a lógica da Sentença
+   - !true => false
+   - !false => true 
+
+   ### Semana 3 - Estrutura de Controle de Dados ( Condicionais e Repetição )
+   
+   - **Conteúdo**: Estruturas `if`, `else`, `elseif`, operadores ternários, `match` => substituto do `swicth/case`, loops `for`, `while`, `do-while` e `foreach`
+
+   #### Condicionais (IF, ELSE, ELSEIF)
+
+   - **Formas de Uso**:
+
+- Uso do `if` apenas: 
+Exemplo: aplicar um desconto de 10% em comrpas acima de 100 Reais;
+
+```mermaid
+
+graph LR
+    A[comando] --> B[condição] --> C[Tomada de Decisão]
+
+```
+
+```php
+if ($valorCompra > 100) {
+    $valorCompra = $valorCompra * 0.1
+}
+```
+
+- Uso do `if` e do `else`
+Exemplo: Aplicar um desconto de 10% para compras acima de 100 reais e 5% para as demais compras
+
+```mermaid
+
+graph LR
+
+   A[Comando] --> B{Condição}
+   B --> |true| C[Ação 1]
+   B --> |false| D[Ação 2]
+
+   ```
+
+   ```php
+
+   if($valorCompra > 100){
+      $valorFinal = $valorCompra*0,1;
+   } else{
+      $valorFinal = $valorCompra*0.05;
+   }
+
+   ```
+
+   - Uso do `elseif` (Encadeado)
+   Exemplo: Compras acima de 200 reais tem 15% de desconto, acima de 100 reais tem 10% de desconto e outras 5% de desconto
+
+   ```mermaid
+
+   graph LR
+    A[Comando] --> B{Condição 1}
+    B --> |true| C[Ação 1]
+    B --> |false| D{Condição 2}
+    D --> |true| E[Ação 2]
+    D --> |false| F[Ação 3]
+
+```
+
+```php
+
+if($valorCompra > 200){
+   $valorFinal = $valorCompra*0.85;
+} elseif($valorCompra > 100){
+   $valorFinal - $valorCompra*0.9;
+} else {
+   $valorFinal = $valorCompra*0.95;
+}
+
+``` 
+*obs*: sempre usar `elseif` para situações que precisam de mais de uma condição, ou seja, fazer encadeamento das condições.
+
+- Uso **ERRADO** do if 
+
+Não Fazer o Encadeamento de condicionais
+
+```php
+if($valorCompra > 200) {
+   $valorCompra = $valorCompra*0.85;
+}
+if($valorCompra > 100) {
+   $valorFinal = $valorCompra*0.90;
+}
+if ($valorCompra < 100>) {
+   $valorFinal = $valorCompra*0.95;
+}
+
+```
+
+
+
+##### Operadores Ternários
+Um atalho para a estrutura condicional `if/else`, normalmente escrito em uma unica linha de código.
+
+` condição ? verdadeira : falso`
+
+Perfeito para decisões curtas de uma linha de comando 
+Exemplo: Verificar se a pessoa é maior de idade (18)
+
+```php
+
+$idade = 20;
+// O formato é : (Condição) ? Verdadeiro : Falso;
+
+$status = ($idade >= 18) ? "Maior de Idade" : "Menor de Idade;
+$status2 = ($idade<18) ? "Criança" : ($idade<60) ? "Adulto" : "Idoso"; 
+
+```
+
+##### Expressão Condicional `match` (PHP 8)
+
+No Mercado de PHP atual, não se usa mais uma dezena de `if/elseif` para checar valores fixos, e o antigo `switch/case` caiu em desuso. Usamos o `match`. Ele compara um valor e retorna diretamente o resultado.
+
+```mermaid 
+
+graph TD
+   A [valor] --> B {Condicional}
+   B --> C [Ação 1]
+   B --> D [Ação 2]
+   B --> E [Ação 3]
+   B --> F [Ação 4]
+   B --> G [...]
+   B --> H [Ação defult]
+
+  ```
+
+  ```php
+
+  $diaSemana = date("Week"); //Pega o Dia da semana em formato Numérico 
+
+  //transformar dia da Semana em Formato Texto (Domingo, Segunda, ...)
+
+  $nomeDiaSemana = match($diaSemana){
+   "0" => "Domingo",
+   "1" => "Segunda", 
+   "2" => "Terça", 
+   "3" => "Quarta",
+   "4" => "Quinta",
+   "5" => "Sexta",
+   "6" => "Sabado",
+   "default" => "Dia inválido"
+  }
+```
+
+  ---
+
+  ##### Laços de Repetição
+
+  Um laço de repetição faz com que, um bloco de códigos rode várias vezes, até que uma condição mande parar.
+
+  - o Laço `while` (Enquanto)
+
+  Ele verifica se a condição é verdadeira ANTES de entrar no laço, ideal quando você não sabe quantas vezes vai rodar o laço.
+
+  ```mermaid
+
+  flowchart LR
+     
+    A[Início] --> B{Condição}
+    B --true--> C[Executa o Laço]
+    C --> B
+    B --false--> D[Interrompe o Laço]
+
+
+ ```
+Exemplo: Jogo de Adivinhação de um nº Secreto
+
+```php
+
+$numeroSecreto = rand(1,10);
+
+$tentativas = 0;
+
+while($tentativa != $numeroSecreto){
+    echo "Tente Novamente"
+    //vou pegar um nº aleatório entre 1 e 10
+    $tentativa = rand(1,10);
+}
+
+echo " Acertou Miseravi!!! o n secreto é $numeroSecreto";
+
+```
+
+- o Laço `do while` (faça Enquanto) 
+
+A diferença é que ele executa o bloco pelo menos uma vez, mesmo que a condição seja falsa desde o início, pois ele só pergunta no final 
+
+```mermaid
+
+flowchart LR
+
+A([Início]) --> B[Executar Ação]
+B --> C{Condição}
+C --true--> B
+C --false--> D([Fim]) 
+
+```
+Exemplo: Jogo de Adivinhação  
+
+```php  
+
+$numeroSecreto = rand(1,10);
+
+do {
+    $tentativa = rand(1,10); //Simular um palpite aleatório
+
+    if($tentativa == $numeroSecreto){
+        echo "Parabéns, Acertou!!!";
+    }
+  
+} while ($tentativa != $numeroSecreto);
+
+```
+
+obs: Uso Idela do `do-while`, Menus de sistema ou sistema de solicitações de dados, sistemas interativos;
