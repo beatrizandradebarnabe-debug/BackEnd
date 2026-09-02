@@ -6,14 +6,14 @@
     <title>Minha Primeira Página PHP</title>
 </head>
 <body>
-    <h1>Olá Alunos! Vamos aprender PHP?</h1>
+    <h1>Olá Alunos! Vamos Aprender PHP???</h1>
     <?php
-    echo "Olá, mundo!!!";
-    // Será Exibido um Parágrafo com o texto Acima
+    echo "Olá, Mundo!!!";
+    // Sera Exibido um parágrafo com o texto acima
     echo "<br> Oi, eu serei exibido na tela";
     # Outra Forma de Fazer Comentário
     echo "<br> "
-    /* Outra forma de escrever comentários */
-    ?>
+    /* Outra Forma de Escrever Comentário */
+    ?>   
 </body>
 </html>

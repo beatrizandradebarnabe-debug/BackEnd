@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(247, 228, 228);
+    background-color: aliceblue;
     margin: 0 auto;
 }
 table {
@@ -9,13 +9,13 @@ table {
 }
 
 th, td {
-    border: 1px solid #000000;
+    border: 1px solid #ccc;
     padding: 8px;
     text-align: right;
 }
 
 th {
-    background-color: #fcffd7;
+    background-color: #f4f4f4;
     font-weight: bold;
-     text-align: left;
+    text-align: left;
 }
