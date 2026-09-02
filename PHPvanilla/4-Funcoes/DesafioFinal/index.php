@@ -43,6 +43,7 @@ $valorCompra = 150.00;
         <?php 
             // Usando a função com referência (&) para dar 10% de desconto
             aplicarDesconto($valorCompra, 10); 
+            
         ?>
         
         <p><strong>Total com Desconto (10%):</strong> <?php echo formatarMoeda($valorCompra); ?></p>
